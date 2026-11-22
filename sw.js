@@ -1,6 +1,6 @@
 /* Makes the game work with no internet. The whole game is one page, so caching it is enough.
    Online: always try the network first so updates arrive. Offline: use the saved copy. */
-const CACHE = 'lats-v4';
+const CACHE = 'lats-v5';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
 
 self.addEventListener('install', (event) => {
