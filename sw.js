@@ -1,6 +1,6 @@
 /* Makes the game work with no internet. The whole game is one page, so caching it is enough.
    Online: always try the network first so updates arrive. Offline: use the saved copy. */
-const CACHE = 'lats-v1';
+const CACHE = 'lats-v2';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './icon-maskable-512.png'];
 
 self.addEventListener('install', (event) => {
@@ -20,7 +20,7 @@ self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
   event.respondWith(
-    fetch(req)
+    fetch(req, { cache: 'no-cache' })
       .then((res) => {
         if (res.ok) {
           const copy = res.clone();
